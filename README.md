@@ -24,16 +24,13 @@ The order of operations is the following:
 
 7. Run the first iteration of the simulation. This simulation run will output a trajectory of all 10000 dye labels over the course of this simulation iteration.
 
-Then, for n number of user-specified iterations:
+For *n* number of user-specified iterations, loop through Steps #8-10 below:
 
-	8. Input the dye label trajectory file to perform the distance-based colocalization check + appropriate tagging of all dye labels and generate a new dye label input file containing those tags.
+> 8. Input the dye label trajectory file to perform the distance-based colocalization check + appropriate tagging of all dye labels and generate a new dye label input file containing those tags.
+> 9. Run a brief simulation to obtain output files that give the number of immobilized dye labels and stuck SREV nucleosomes in the simulation. This is important for recomputing the parameter needed to properly set the temperature of the mobile objects at the desired level.
+> 10. Run the next iteration of the simulation with the new dye label input file. This simulation run will output a trajectory of all 10000 dye labels over the course of this simulation iteration.
 
-	9. Run a brief simulation to obtain output files that give the number of immobilized dye labels and stuck SREV nucleosomes in the simulation. This is important for recomputing the parameter needed to properly set the temperature of the mobile objects at the desired level.
-
-	10. Run the next iteration of the simulation with the new dye label input file. This simulation run will output a trajectory of all 10000 dye labels over the course of this simulation iteration.
-
-
-Simulate a "wash" step of the simulated labeled chromatin sample by filtering out all dye labels that have not bound to an SREV nucleosome by that time. Output the coordinates of these dye labels still present in the model chromatin post-wash. This output is your post-wash labeled model chromatin sample. 
+11. Simulate a "wash" step of the simulated labeled chromatin sample by filtering out all dye labels that have not bound to an SREV nucleosome by that time. Output the coordinates of these dye labels still present in the model chromatin post-wash. This output is your post-wash labeled model chromatin sample. 
 
 
 BEFORE YOU BEGIN:
