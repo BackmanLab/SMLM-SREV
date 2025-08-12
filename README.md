@@ -42,11 +42,4 @@ Set up your directory of SREV configurations in the following manner:
 - For the *n* number of SREV configs in this production directory, have *n* directories (one for each SREV config). Each SREV config should be assigned its own index that is between 1 to *n*. The SREV config file name should be named as "config-$_i_.dump", where $_i_ is the index of that SREV config. Each of the directories within the production directory should also be assigned its own index that is between 1 to *n*. Each of these directories within the production directory should be named as "Config_$_i_", where $_i_ is the assigned index of that directory. Each of these directories should only contain the SREV config that is of the same index as the directory.
   
 
-mkdir /yourprojectdir/set_of_simulations/SREV_configs_made_with_same_SREV_input_params/
-
-for i in {1..number_of_srev_configs}; do
-    mkdir /yourprojectdir/set_of_simulations/SREV_configs_made_with_same_SREV_input_params/Config_$i
-    cp 
-
-
 
