@@ -8,23 +8,31 @@
 #SBATCH --mem=30G
 #SBATCH --output=log.%j
 
-#cd /projects/p31375/STORM/SphericalSize/MultipleConfigs/FixAndContinue/Phi12/Phi12/Config_7/
+#TRADE OUT DIRNAME FOR DIRECTORY TO YOUR SREV CONFIGS
 
 dirname="/projects/p31375/STORM/SphericalSize/MultipleConfigs/Set4/Phi08/Config_${SLURM_ARRAY_TASK_ID}"
 
 cd $dirname
 
+# TRADE OUT SOURCE DIRECTORY YOU COPY FILES FROM FOR LOCATION OF THESE SCRIPTS
+
 cp /projects/p31375/STORM/SphericalSize/MultipleConfigs/FixAndContinue/EdU_Execution_Scripts/* .
+
+# safeguard preventing combination of data from multiple simulations in case you need to rerun anything
 
 rm walkers.xyz
 rm walkerinput.in
 rm edited-config*
+
+# load packages
 
 module purge
 
 module load lammps/20200303-openmpi-4.0.5-intel-19.0.5.281
 
 module load mpi/openmpi-4.1.4-gcc
+
+# automatically trade out config-specific filenames in scripts
 
 lammpsdump="config-relaxed-${SLURM_ARRAY_TASK_ID}.dump"
 editedlammpsdump="edited-config-${SLURM_ARRAY_TASK_ID}.dump"
@@ -47,7 +55,11 @@ sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" overla
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" first_sim.in
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" continue_sim.in
 
+# get version of SREV configs that lack all overlapping nucleosomes
+
 mpirun -np 32 lmp -in getconfig_nooverlaps.in
+
+# get needed values for formula for temp to input that produces target mobile temp
 
 mpirun -np 32 lmp -in overlapfilter.in
 
@@ -61,14 +73,19 @@ echo $e
 sed -i "s:^fix 1 all nvt temp .*:fix 1 all nvt temp $e $e 1.0:" first_sim.in
 rm dump.ellipsoid
 
+# run iteration of simulation
+
 mpirun -np 32 lmp -in first_sim.in
 
 for i in $(seq 1 10); do
+	# below rm command clears nothing when i==1; kept in anyway since it performs rm when needed for rest of i's in loop range
 	rm post-immobil-input.in
+ 	# produce version of label input data that marks labels that should be immobilized at the conclusion of that iteration
 	gfortran -Ofast ImmobilConversion.f90
 	./a.out
 	rm walkers.xyz
 	rm dump.ellipsoid*
+ 	# get needed values for formula for temp to input that produces target mobile temp
 	sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" overlapfilter_continue.in
 	mpirun -np 32 lmp -in overlapfilter_continue.in
 	var=$(sed -n '4,4p' dump.immob)
@@ -83,5 +100,10 @@ for i in $(seq 1 10); do
 	sed -i "s:^fix 1 all nvt temp .*:fix 1 all nvt temp $e $e 1.0:" continue_sim.in
 	rm dump.immob
 	rm dump.ellipsoid
+ 	# run next iteration of simulation
 	mpirun -np 32 lmp -in continue_sim.in
 done
+
+gfortran -Ofast FinalWash.f90
+
+./a.out
