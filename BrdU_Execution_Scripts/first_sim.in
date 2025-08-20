@@ -1,28 +1,35 @@
-# GayBerne interaction tests
-#   Spheroid-Sphere
+# Program: first_sim.in
+# Author: Rivaan Kakkaramadam
+# Description: 
 
 
 units lj
 atom_style ellipsoid
 region box block 0 10 0 10 0 10    # box is overwritten by reading dump file
-create_box 2 box                   # Two atom types: 1) chrm 2) dye labels
+create_box 2 box                   # Two atom types: 1) chrm 2) fluorophores
+
+# read in SREV config file
 
 read_dump config-relaxed-5.dump 0 x y z add yes box yes
 
+# read in initialized fluorophore file
+
 include walkerinput.in
+
+# type 1 is SREV nucleosome ellipsoids; type 2 is mobile fluorophore spheres
 
 set type 1 mass 3.0
 set type 2 mass 1.0
 
-set type 1 shape 1.0 1.0 0.5 #1 is x next is y third is z (LAMMPS docs doesn't describe same type of particle as ours) 
-set type 2 shape 1.0 1.0 1.0 # shape basically = diameter in one plane
+set type 1 shape 1.0 1.0 0.5 # set nucleosome ellipsoid dimensions
+set type 2 shape 1.0 1.0 1.0 # set fluorophore sphere dimensions
 
 group ellip type 1
 group spher type 2
 
 group big type 1 2
 
-set group big quat/random 87287 # randomly initialize orientation of all objects
+set group big quat/random 87287 # initialize random orientation of all objects
 
 comm_style tiled # used for specifying how processors communicate w/ each other during sim
 comm_modify cutoff 3.0 mode single vel yes
