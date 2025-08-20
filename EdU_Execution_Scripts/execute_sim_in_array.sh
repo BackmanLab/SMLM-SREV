@@ -36,6 +36,7 @@ module load mpi/openmpi-4.1.4-gcc
 
 lammpsdump="config-relaxed-${SLURM_ARRAY_TASK_ID}.dump"
 editedlammpsdump="edited-config-${SLURM_ARRAY_TASK_ID}.dump"
+outputwashfile="EdU-postwash-config-${SLURM_ARRAY_TASK_ID}.xyz"
 
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" getconfig_nooverlaps.in
 sed -i "s:^dump 1 ellip custom 100 edited-config.*:dump 1 ellip custom 100 ${editedlammpsdump} id type x y z c_0[*]:" getconfig_nooverlaps.in
@@ -54,6 +55,9 @@ sed -i "s/\r//g" GetColoc.f90
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" overlapfilter.in
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" first_sim.in
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" continue_sim.in
+
+sed -i "s:^  configfilename = .*:  configfilename = '${editedlammpsdump}':" FinalWash.f90
+sed -i "s:^open(unit = 9, file =.*:open(unit = 9, file = '${outputwashfile}'):" FinalWash.f90
 
 # get version of SREV configs that lack all overlapping nucleosomes
 
