@@ -8,9 +8,7 @@ program finalwash
   real*8 :: walkervol, srevvol, walkradius, srevradius, PI
   integer, allocatable :: localcount(:), timesteps(:), counts(:)
   integer, allocatable :: bindarray(:)
-  real*8, allocatable :: srevx(:), srevy(:), srevz(:), srevquatw(:), srevquati(:), srevquatj(:), srevquatk(:)
-  real*8 :: shapex, shapey, shapez, walkshapex, walkshapey, walkshapez
-  real*8 :: srevshapex, srevshapey, srevshapez
+  real*8, allocatable :: srevx(:), srevy(:), srevz(:)
   real*8, allocatable :: walkx(:), walky(:), walkz(:)
   character(len=50) :: configfilename
   character(len=15) :: tmp, tmp1
