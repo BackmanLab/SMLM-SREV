@@ -97,6 +97,7 @@ do i = 1, walkercount
      	write(9,*) bindarray(i), walkx(i), walky(i), walkz(i)
 	endif
 enddo
+close(9)
 
 print *, 'finished writing'
 
