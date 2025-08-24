@@ -9,7 +9,6 @@ program immobilconversion
   real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
   integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount
   integer :: nt, binding, extractionpoint,srevtype
-  integer, allocatable :: localcount(:), timesteps(:), counts(:)
   integer, allocatable :: bindarray(:)
   real*8, allocatable :: srevx(:), srevy(:), srevz(:), walkx(:), walky(:), walkz(:)
   character(len=100) :: syncommand, wccommand
@@ -34,6 +33,8 @@ program immobilconversion
   enddo
   walkercount = 10000
 
+  allocate(srevx(npart), srevy(npart), srevz(npart))
+  
   do i = 1, (npart)
      read(1,*) k, srevtype, x, y, z,kr,kr,kr,kr,kr,kr,kr
         srevx(i) = x
