@@ -32,7 +32,9 @@ group big type 1 2
 
 set group big quat/random 87287 # initialize random orientation of all objects
 
-comm_style tiled # params that define communication of simulation sub-boxes during sim. (sim. is big so defining this properly is needed)
+# below lines dictate rules for interprocessor communication during sim. (sim. is big so defining this properly is needed)
+
+comm_style tiled
 comm_modify cutoff 3.0 mode single vel yes
 
 balance 1.1 rcb
