@@ -20,9 +20,9 @@ set type 1 mass 3.0
 set type 2 mass 1.0
 set type 3 mass 1.0
 
-set type 1 shape 1.0 1.0 0.5 # set nucleosome ellipsoid dimensions
-set type 2 shape 1.0 1.0 1.0 # set mobile fluorophore ellipsoid (sphere) dimensions 
-set type 3 shape 1.0 1.0 1.0 # set colocalized fluorophore ellipsoid (sphere) dimensions
+set type 1 shape 1.0 1.0 0.5 # set SREV nucleosome ellipsoid dimensions
+set type 2 shape 1.0 1.0 1.0 # set BrdU mobile fluorophore ellipsoid (sphere) dimensions 
+set type 3 shape 1.0 1.0 1.0 # set BrdU colocalized fluorophore ellipsoid (sphere) dimensions
 
 group ellip type 1
 group spher type 2
