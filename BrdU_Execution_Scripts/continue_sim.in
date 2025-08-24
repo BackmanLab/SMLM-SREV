@@ -33,7 +33,9 @@ group allLabel type 2 3 # defining a group of "dye label particles" (this is mob
 
 set group ellip quat/random 87287 # initialize random orientation of all SREV nucleosomes
 
-comm_style tiled # params that define communication of simulation sub-boxes during sim. (sim. is big so defining this properly is needed)
+# below lines dictate rules for interprocessor communication during sim. (sim. is big so defining this properly is needed)
+
+comm_style tiled 
 comm_modify cutoff 3.0 mode single vel yes
 
 balance 1.1 rcb
