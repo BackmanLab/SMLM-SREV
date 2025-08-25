@@ -10,7 +10,7 @@
 program finalwash
   implicit none
   real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
-  integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount
+  integer :: linecount, saves, i, j, k, n, w, npart, walkercount
   integer :: nt, binding, extractionpoint,srevtype
   integer, allocatable :: bindarray(:)
   real*8, allocatable :: srevx(:), srevy(:), srevz(:), walkx(:), walky(:), walkz(:)
