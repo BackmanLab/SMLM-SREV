@@ -47,3 +47,18 @@ REFERENCES AND ACKNOWLEDGEMENTS:
 The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator. For more on LAMMPS, consult https://www.lammps.org .
 
 LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
+
+The LAMMPS simulations made specific use of work described in the
+following references.  See http://lammps.sandia.gov/cite.html
+for details.
+
+pair gayberne command:
+
+@Article{Brown09,
+ author =  {W. M. Brown, M. K. Petersen, S. J. Plimpton, and G. S. Grest},
+ title =   {Liquid crystal nanodroplets in solution},
+ journal = {J.~Chem.~Phys.},
+ year =    2009,
+ volume =  130,
+ pages =   {044901}
+}
