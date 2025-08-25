@@ -1,15 +1,20 @@
+! TITLE: FinalWash.f90
+! AUTHOR: Rivaan Kakkaramadam
+! DESCRIPTION: This script takes in the dye label trajectory file outputted by the last iteration of the diffusivity simulation
+! to perform a Euclidean distance-based colocalization check and appropriate tagging of all dye labels. The "wash" step of this model
+! chromatin sample is simulated by producing a list of dye labels that filters out the dye labels that had not bound to the model chromatin
+! by the end of the simulation and thus would get "washed" out of the model chromatin sample.
+! Output is the coordinates of only the dye labels that are tagged as colocalized by the end of the full simulation and thus would be 
+! the labels that remain on the model chromatin sample post-wash.
+
 program finalwash
   implicit none
-  real*8 :: wx, wy, wz, rcutoff, sigmawalkerwalker, sigmachromatinchromatin, sigmawalkerchromatin, cutoffwalkerchromatin 
-  real*8 :: xr, yr, zr, r, boxlength, savesreal, walkerreal, npartreal
-  real*8 :: totalwalkdens, protradius, x, y, z, kr
-  integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount, xc, yc, zc
-  integer :: voxeldeltaint, nt, binding, extractionpoint
-  real*8 :: walkervol, srevvol, walkradius, srevradius, PI
-  integer, allocatable :: localcount(:), timesteps(:), counts(:)
+  real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
+  integer :: linecount, saves, i, j, k, n, w, npart, walkercount
+  integer :: nt, binding, extractionpoint,srevtype
   integer, allocatable :: bindarray(:)
-  real*8, allocatable :: srevx(:), srevy(:), srevz(:)
-  real*8, allocatable :: walkx(:), walky(:), walkz(:)
+  real*8, allocatable :: srevx(:), srevy(:), srevz(:), walkx(:), walky(:), walkz(:)
+  character(len=100) :: syncommand, wccommand
   character(len=50) :: configfilename
   character(len=15) :: tmp, tmp1
   
@@ -17,7 +22,6 @@ program finalwash
   boxlength = 130d0 ! in ru; CHANGE THIS TO MATCH BOXLENGTH PARAMS IN SREV CONFIG FILE
   srevradius = 1.00d0/2.0d0
   protradius = 0.20d0/2.0d0
-  PI = dacos(-1.0d0)
   saves = 21
   extractionpoint = 20000
   configfilename = 'edited-config-5.dump'
@@ -25,15 +29,15 @@ program finalwash
   open(unit = 1, file = trim(configfilename))
   do i = 1, 9
      if (i .eq. 4) then
-        read(1,*) npart
+        read(1,*) npart ! read in the number of SREV nucleosomes
      else
         read(1,*)
      endif
   enddo
   walkercount = 10000
-  allocate(srevx(npart), srevy(npart), srevz(npart))
+  allocate(srevx(npart), srevy(npart), srevz(npart)) ! allocate sufficient memory to arrays storing data on SREV nucleosomes
 
-  do i = 1, (npart)
+  do i = 1, (npart) ! read in SREV nucleosome coordinates
      read(1,*) k, srevtype, x, y, z,kr,kr,kr,kr,kr,kr,kr
      srevx(i) = x
      srevy(i) = y
@@ -45,9 +49,8 @@ program finalwash
 
 
   allocate(walkx(walkercount), walky(walkercount), walkz(walkercount))
-  allocate(timesteps(saves), counts(saves))
   allocate(bindarray(walkercount))
-  do j = 1, saves
+  do j = 1, saves ! iterate over fluorophore trajectory file
      print *, "j", j
      read(2,*) walkercount
      read(2,*) tmp, tmp1, nt
@@ -55,7 +58,7 @@ program finalwash
      if (nt .eq. extractionpoint) then
      do i = 1, walkercount
         read(2,*) k, wx, wy, wz
-        if (k .eq. 3) then
+        if (k .eq. 3) then ! if the dye label was already tagged as SREV-colocalized there is no need to repeat the distance check to keep it tagged as coloc
            bindarray(i) = k
            walkx(i) = wx
            walky(i) = wy
@@ -81,7 +84,7 @@ program finalwash
      endif
      enddo
      else
-        do i = 1, walkercount
+        do i = 1, walkercount ! this ensures that before program gets to extraction point the file is properly iterated over
            read(2,*) k, wx, wy, wz
         enddo
      endif
@@ -89,7 +92,7 @@ enddo
 
 print *, 'finished iterating'
 
-open(unit = 9, file = "EdU-postwash-config-7.xyz")
+open(unit = 9, file = "EdU-postwash-config-7.xyz") ! output the coordinates of the dye labels that remain bound to the model chromatin sample post-wash
 do i = 1, walkercount
 	if (bindarray(i) .eq. 3) then
      	write(9,*) bindarray(i), walkx(i), walky(i), walkz(i)
