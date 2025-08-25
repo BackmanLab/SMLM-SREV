@@ -29,15 +29,15 @@ program finalwash
   open(unit = 1, file = trim(configfilename))
   do i = 1, 9
      if (i .eq. 4) then
-        read(1,*) npart
+        read(1,*) npart ! read in the number of SREV nucleosomes
      else
         read(1,*)
      endif
   enddo
   walkercount = 10000
-  allocate(srevx(npart), srevy(npart), srevz(npart))
+  allocate(srevx(npart), srevy(npart), srevz(npart)) ! allocate sufficient memory to arrays storing data on SREV nucleosomes
 
-  do i = 1, (npart)
+  do i = 1, (npart) ! read in SREV nucleosome coordinates
      read(1,*) k, srevtype, x, y, z,kr,kr,kr,kr,kr,kr,kr
      srevx(i) = x
      srevy(i) = y
@@ -49,9 +49,8 @@ program finalwash
 
 
   allocate(walkx(walkercount), walky(walkercount), walkz(walkercount))
-  allocate(timesteps(saves), counts(saves))
   allocate(bindarray(walkercount))
-  do j = 1, saves
+  do j = 1, saves ! iterate over flurophore trajectory file
      print *, "j", j
      read(2,*) walkercount
      read(2,*) tmp, tmp1, nt
@@ -59,7 +58,7 @@ program finalwash
      if (nt .eq. extractionpoint) then
      do i = 1, walkercount
         read(2,*) k, wx, wy, wz
-        if (k .eq. 3) then
+        if (k .eq. 3) then ! if the dye label was already tagged as SREV-colocalized there is no need to repeat the distance check to keep it tagged as coloc
            bindarray(i) = k
            walkx(i) = wx
            walky(i) = wy
@@ -85,7 +84,7 @@ program finalwash
      endif
      enddo
      else
-        do i = 1, walkercount
+        do i = 1, walkercount ! this ensures that before program gets to extraction point the file is properly iterated over
            read(2,*) k, wx, wy, wz
         enddo
      endif
@@ -93,7 +92,7 @@ enddo
 
 print *, 'finished iterating'
 
-open(unit = 9, file = "BrdU-postwash-config-7.xyz")
+open(unit = 9, file = "BrdU-postwash-config-7.xyz") ! output the coordinates of the dye labels that remain bound to the model chromatin sample post-wash
 do i = 1, walkercount
 	if (bindarray(i) .eq. 3) then
      	write(9,*) bindarray(i), walkx(i), walky(i), walkz(i)
