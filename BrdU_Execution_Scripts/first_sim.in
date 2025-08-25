@@ -81,8 +81,8 @@ thermo 100
 #                 colname c_0[5] shapex colname c_0[6] shapey colname c_0[7] shapez
 #dump_modify    1 sort id
 
-dump mydump spher xyz 1000 walkers.xyz
-dump_modify mydump sort id
+dump mydump spher xyz 1000 walkers.xyz # generates dye label trajectory file of this simulation iteration
+dump_modify mydump sort id # ensures particle order in dye label trajectory file is consistent over all timesteps
 
 #uncommenting below line generates restart files (simulation savepoints that you can continue in a new LAMMPS run)
 
