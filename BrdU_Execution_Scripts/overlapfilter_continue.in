@@ -7,7 +7,7 @@
 units lj
 atom_style ellipsoid
 region box block 0 10 0 10 0 10    # box is overwritten by reading dump file
-create_box 3 box                   # THREE atom types: 1) chrm 2) mobile labels 3) immobilized/colocalized labels
+create_box 3 box                   # Three atom types: 1) chrm 2) mobile labels 3) immobilized/colocalized labels
 
 # read in the SREV config file
 
