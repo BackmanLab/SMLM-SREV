@@ -7,7 +7,7 @@
 program immobilconversion
   implicit none
   real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
-  integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount
+  integer :: linecount, saves, i, j, k, n, w, npart, walkercount
   integer :: nt, binding, extractionpoint,srevtype
   integer, allocatable :: bindarray(:)
   real*8, allocatable :: srevx(:), srevy(:), srevz(:), walkx(:), walky(:), walkz(:)
@@ -19,7 +19,6 @@ program immobilconversion
   boxlength = 130d0 ! in ru; CHANGE THIS TO MATCH BOXLENGTH PARAMS IN SREV CONFIG FILE
   srevradius = 1.00d0/2.0d0
   protradius = 0.20d0/2.0d0
-  PI = dacos(-1.0d0)
   saves = 21
   extractionpoint = 20000
   configfilename = 'edited-config-5.dump'
