@@ -1,17 +1,11 @@
 program finalwash
   implicit none
-  real*8 :: wx, wy, wz, rcutoff, sigmawalkerwalker, sigmachromatinchromatin, sigmawalkerchromatin, cutoffwalkerchromatin 
-  real*8 :: xr, yr, zr, r, boxlength, savesreal, walkerreal, npartreal
-  real*8 :: totalwalkdens, protradius, x, y, z, kr
-  integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount, xc, yc, zc
-  integer :: voxeldeltaint, nt, binding, extractionpoint
-  real*8 :: walkervol, srevvol, walkradius, srevradius, PI
-  integer, allocatable :: localcount(:), timesteps(:), counts(:)
+  real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
+  integer :: linecount, startline, saves, i, j, k, n, w, npart, walkercount
+  integer :: nt, binding, extractionpoint,srevtype
   integer, allocatable :: bindarray(:)
-  real*8, allocatable :: srevx(:), srevy(:), srevz(:), srevquatw(:), srevquati(:), srevquatj(:), srevquatk(:)
-  real*8 :: shapex, shapey, shapez, walkshapex, walkshapey, walkshapez
-  real*8 :: srevshapex, srevshapey, srevshapez
-  real*8, allocatable :: walkx(:), walky(:), walkz(:)
+  real*8, allocatable :: srevx(:), srevy(:), srevz(:), walkx(:), walky(:), walkz(:)
+  character(len=100) :: syncommand, wccommand
   character(len=50) :: configfilename
   character(len=15) :: tmp, tmp1
   
@@ -19,7 +13,6 @@ program finalwash
   boxlength = 130d0 ! in ru; CHANGE THIS TO MATCH BOXLENGTH PARAMS IN SREV CONFIG FILE
   srevradius = 1.00d0/2.0d0
   protradius = 1.00d0/2.0d0
-  PI = dacos(-1.0d0)
   saves = 21
   extractionpoint = 20000
   configfilename = 'edited-config-5.dump'
