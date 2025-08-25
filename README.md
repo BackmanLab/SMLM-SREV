@@ -42,4 +42,8 @@ Set up your directory of SREV configurations in the following manner:
 - For the *n* number of SREV configs in this production directory, have *n* directories (one for each SREV config). Each SREV config should be assigned its own index that is between 1 to *n*. The SREV config file name should be named as "config-$_i_.dump", where $_i_ is the index of that SREV config. Each of the directories within the production directory should also be assigned its own index that is between 1 to *n*. Each of these directories within the production directory should be named as "Config_$_i_", where $_i_ is the assigned index of that directory. Each of these directories should only contain the SREV config that is of the same index as the directory.
   
 
+REFERENCES AND ACKNOWLEDGEMENTS:
 
+The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator. For more on LAMMPS, consult https://www.lammps.org .
+
+LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
