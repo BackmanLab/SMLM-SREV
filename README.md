@@ -40,7 +40,9 @@ Set up your directory of SREV configurations in the following manner:
 - Have a production directory that is for containing all of your SMLM simulations in your set of input SREV configurations. This directory should ONLY contain SREV configurations (configs) that were made with the same input parameters (ex: all the SREV configs in this directory being made with input alpha = 1.15 & phi = 0.12 is good, some SREV configs in this directory being made with input alpha = 1.15 & phi = 0.12 and other SREV configs in this directory being made with input alpha = 1.15 & phi = 0.16 is bad).
 
 - For the *n* number of SREV configs in this production directory, have *n* directories (one for each SREV config). Each SREV config should be assigned its own index that is between 1 to *n*. The SREV config file name should be named as "config-$_i_.dump", where $_i_ is the index of that SREV config. Each of the directories within the production directory should also be assigned its own index that is between 1 to *n*. Each of these directories within the production directory should be named as "Config_$_i_", where $_i_ is the assigned index of that directory. Each of these directories should only contain the SREV config that is of the same index as the directory.
-  
+
+Specify the simulation box dimensions. This should match the SREV config file dimensions. All these scripts are in units of reduced units or "ru", where 1 ru = 9.8 nm.
+Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all boxlength variables are consistent with the box dimensions stipulated in the SREV config file (so 200d0 or 130d0 for 2000 nm long or 1300 nm long, respectively) and that all xlowerbound, ylowerbound, and zlowerbound variables are consistent with the lowerbound dimensions stipulated in the SREV config file (so -65 for -650 nm or -100 for -1000 nm).
 
 REFERENCES AND ACKNOWLEDGEMENTS:
 
