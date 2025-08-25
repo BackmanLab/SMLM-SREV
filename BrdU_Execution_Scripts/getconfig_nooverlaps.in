@@ -1,11 +1,8 @@
-# GayBerne interaction tests
-#   Spheroid-Sphere
-
 
 units lj
 atom_style ellipsoid
 region box block 0 10 0 10 0 10    # box is overwritten by reading dump file
-create_box 2 box                   # Two atom types: 1) chrm 2) proteins
+create_box 2 box                   # Two atom types: 1) chrm 2) fluorophores
 
 read_dump config-relaxed-5.dump 0 x y z add yes box yes
 
@@ -59,10 +56,6 @@ thermo_style custom step temp c_mTempRegularTemp c_mTAT epair emol etotal press
 
 thermo 100
 
-#run 1000
-
-#dump id all atom 50 dump.lammpstr
-#dump 1 all custom 50 dump.lammpstrj it type x y z c_0[*]
 dump 1 ellip custom 100 edited-config-5.dump id type x y z c_0[*]
 dump_modify 1 sort id
 
