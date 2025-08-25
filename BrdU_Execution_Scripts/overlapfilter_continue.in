@@ -41,7 +41,7 @@ balance 1.1 rcb
 
 velocity spher create 2.50 87287
 velocity immob zero linear #zero the starting velocity of all immobilized particles
-velocity immob zero linear 
+velocity immob zero angular
 
 fix freeze immob setforce 0.0 0.0 0.0 #zero the forces that would act on the immobilized particles
 
