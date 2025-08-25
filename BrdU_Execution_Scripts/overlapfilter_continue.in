@@ -1,12 +1,19 @@
-# purpose of this simulation is to generate the number of immobilized objects (SREV nucleosomes + colocalized labels) 
-# after LAMMPS' overlapping filter process & iteration of dye diffusion sim. (important in temp calculation)
+# Program: overlapfilter_continue.in
+# Author: Rivaan Kakkaramadam
+# Description: The purpose of this simulation is to generate the number of immobilized objects (SREV nucleosomes + colocalized labels) 
+# after LAMMPS' overlapping filter process & iteration of dye diffusivity simulation. This number is critical in calculating
+# the input parameters needed to simulate the diffusion of mobile labels at a consistent temperature between iterations.
 
 units lj
 atom_style ellipsoid
 region box block 0 10 0 10 0 10    # box is overwritten by reading dump file
 create_box 3 box                   # THREE atom types: 1) chrm 2) mobile labels 3) immobilized/colocalized labels
 
+# read in the SREV config file
+
 read_dump config-relaxed-5.dump 0 x y z add yes box yes
+
+# read in dye label input file which contains most current info on which fluorophores should stay chromatin-bound and which should be mobile
 
 include post-immobil-input.in
 
@@ -14,9 +21,9 @@ set type 1 mass 3.0
 set type 2 mass 1.0
 set type 3 mass 1.0
 
-set type 1 shape 1.0 1.0 0.5 #1 is x next is y third is z (LAMMPS docs doesn't describe same type of particle as ours) 
-set type 2 shape 1.0 1.0 1.0
-set type 3 shape 1.0 1.0 1.0
+set type 1 shape 1.0 1.0 0.5 # define SREV nucleosome ellipsoid dimensions
+set type 2 shape 1.0 1.0 1.0 # define BrdU mobile fluorophore ellipsoid (sphere) dimensions
+set type 3 shape 1.0 1.0 1.0 # define BrdU colocalized fluorophore ellipsoid (sphere) dimensions
 
 group ellip type 1
 group spher type 2
@@ -39,7 +46,7 @@ velocity coloc zero linear #zero the starting velocity of the immobilized labels
 fix freeze ellip setforce 0.0 0.0 0.0
 fix freezeagain coloc setforce 0.0 0.0 0.0 #zero the forces that would act on the immobilized labels
 
-pair_style gayberne 1.0 1.0 1.0 3.0
+pair_style gayberne 1.0 1.0 1.0 3.0 # define the interactions
 pair_coeff 1 1  1.0 1.0   1.7 1.7 3.4   0.0 0.0 0.0
 pair_coeff 1 2  1.0 1.0   1.7 1.7 3.4   0.0 0.0 0.0
 pair_coeff 2 2  1.0 1.0   1.7 1.7 1.7   0.0 0.0 0.0
