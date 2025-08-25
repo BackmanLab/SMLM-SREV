@@ -87,7 +87,7 @@ thermo 100
 #dump_modify    1 sort id
 
 dump mydump allLabel xyz 1000 walkers.xyz # generates dye label trajectory file of this simulation iteration
-dump_modify mydump sort id
+dump_modify mydump sort id # ensures dye label trajectory file outputs coordinates in ascending order by particle ID at each timestep
 
 #uncommenting below line generates restart files (simulation savepoints that you can continue in a new LAMMPS run)
 
