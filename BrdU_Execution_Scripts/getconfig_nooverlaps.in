@@ -39,10 +39,10 @@ comm_modify cutoff 3.0 mode single vel yes
 
 balance 1.1 rcb
 
-velocity spher create 2.50 87287 # initialize velocities of objects; all objects in the "immob" group must stay frozen
+velocity spher create 2.50 87287 # initialize velocities of objects; all SREV nucleosomes must stay frozen
 velocity ellip zero linear
 
-fix freeze ellip setforce 0.0 0.0 0.0 # zero the forces acting on the SREV nucleosomes
+fix freeze ellip setforce 0.0 0.0 0.0 # zero the forces acting on the SREV nucleosomes to keep them immobilized
 
 pair_style gayberne 1.0 1.0 1.0 3.0 # used for specifying SREV-dye label & dye label-dye label interaction potentials
 pair_coeff 1 1  1.0 1.0   1.7 1.7 3.4   0.0 0.0 0.0
