@@ -56,7 +56,7 @@ Explanations on reduced units used.
 
 ## References and Acknowledgements
 
-The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator<sup>1</sup>. For more on LAMMPS, consult https://www.lammps.org . Interactions between the particles were modeled using LAMMPS' pair gayberne framework for modeling Gay-Berne interaction potentials between ellipsoidal particles<sup>2</sup>.
+The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator<sup>1</sup>. For more on LAMMPS, consult https://www.lammps.org . Interactions between the particles were modeled using LAMMPS' *pair gayberne* framework for modeling Gay-Berne interaction potentials between ellipsoidal particles<sup>2</sup>.
 
 1. LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
 
