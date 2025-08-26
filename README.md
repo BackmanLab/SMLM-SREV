@@ -60,4 +60,4 @@ The simulations scripted here were performed using the LAMMPS Molecular Dynamics
 
 1. LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
 
-2. Brown, W. M., Petersen, M. K., Plimpton, S. J., & Grest, G. S. (2009). Liquid crystal nanodroplets in solution. The Journal of Chemical Physics, 130(4), 044901. https://doi.org/10.1063/1.3058435
+2. Brown, W. M., Petersen, M. K., Plimpton, S. J., & Grest, G. S. (2009). Liquid crystal nanodroplets in solution. *The Journal of Chemical Physics, 130*(4), 044901. https://doi.org/10.1063/1.3058435
