@@ -48,6 +48,12 @@ Set up your directory of SREV configurations in the following manner:
 Specify the simulation box dimensions. This should match the SREV config file dimensions. All these scripts are in units of reduced units or "ru", where 1 ru = 9.8 nm.
 Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all boxlength variables are consistent with the box dimensions stipulated in the SREV config file (so 200d0 or 130d0 for 2000 nm long or 1300 nm long, respectively) and that all xlowerbound, ylowerbound, and zlowerbound variables are consistent with the lowerbound dimensions stipulated in the SREV config file (so -65 for -650 nm or -100 for -1000 nm).
 
+## Conceptual Notes
+
+Explanations on temperature.
+
+Explanations on reduced units used.
+
 ## REFERENCES AND ACKNOWLEDGEMENTS:
 
 The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator<sup>1</sup>. For more on LAMMPS, consult https://www.lammps.org . Interactions between the particles were modeled using LAMMPS' pair gayberne command, which are based on the Gay-Berne ellipsoidal potentials designed by Brown et al<sup>2</sup>.
