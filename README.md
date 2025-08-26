@@ -54,7 +54,7 @@ Explanations on temperature.
 
 Explanations on reduced units used.
 
-## References and Acknowledgements
+## References and Acknowledgments
 
 The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator<sup>1</sup>. For more on LAMMPS, consult https://www.lammps.org . Interactions between the particles were modeled using LAMMPS' pair gayberne framework for modeling Gay-Berne interaction potentials between ellipsoidal particles<sup>2</sup>.
 
