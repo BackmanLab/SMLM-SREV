@@ -50,7 +50,11 @@ Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all 
 
 ## Conceptual Notes
 
-Explanations on temperature.
+### Why is redefining the temperature parameters important?
+
+Over the course of all the simulation iterations, it is important that you are collecting molecule localizations that occur at the same temperature. When specifying the input target temperature parameters, LAMMPS takes that to specify the temperature of the whole simulation. Since the vast majority of the simulation particles are SREV nucleosome ellipsoids that are kept stuck in place, this complicates the actual energy that gets distributed among the mobile particles to have them move at the specified temperature. Therefore, the input temperature parameters that are given to the LAMMPS simulator program should take this into account so that the mobile particles are actually diffusing at your desired target temperature (in this case the script is set to simulate the objects at a target temperature T = 2.50*).
+
+### What does "ru" mean for how I change out different variables?
 
 Explanations on reduced units used.
 
