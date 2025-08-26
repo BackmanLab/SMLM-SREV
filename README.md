@@ -46,21 +46,8 @@ Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all 
 
 REFERENCES AND ACKNOWLEDGEMENTS:
 
-The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator. For more on LAMMPS, consult https://www.lammps.org .
+The simulations scripted here were performed using the LAMMPS Molecular Dynamics Simulator(superscript 1). For more on LAMMPS, consult https://www.lammps.org . Interactions between the particles were modeled using LAMMPS' pair gayberne command, which are based on the Gay-Berne ellipsoidal potentials designed by Brown et al(superscript 2).
 
-LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
+1. LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
 
-The LAMMPS simulations made specific use of work described in the
-following references.  See http://lammps.sandia.gov/cite.html
-for details.
-
-pair gayberne command:
-
-@Article{Brown09,
- author =  {W. M. Brown, M. K. Petersen, S. J. Plimpton, and G. S. Grest},
- title =   {Liquid crystal nanodroplets in solution},
- journal = {J.~Chem.~Phys.},
- year =    2009,
- volume =  130,
- pages =   {044901}
-}
+2. Brown, W. M., Petersen, M. K., Plimpton, S. J., & Grest, G. S. (2009). Liquid crystal nanodroplets in solution. The Journal of Chemical Physics, 130(4), 044901. https://doi.org/10.1063/1.3058435
