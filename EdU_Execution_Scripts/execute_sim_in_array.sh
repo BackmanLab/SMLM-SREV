@@ -97,7 +97,7 @@ for i in $(seq 1 10); do
 	mpirun -np 32 lmp -in overlapfilter_continue.in
 	var=$(sed -n '4,4p' dump.immob)
 	var2=$(sed -n '4,4p' dump.ellipsoid)
-	echo "immob particle numbers"
+	echo "immob particle numbers" # print statements monitoring changes in number of mobile particles
 	echo $var
 	echo $var2
 	a=$(echo "10000 - ( $var - $var2 )" | bc -l)
