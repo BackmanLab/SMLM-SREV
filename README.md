@@ -54,9 +54,11 @@ Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all 
 
 Over the course of all the simulation iterations, it is important that you are collecting molecule localizations that occur at the same temperature. When specifying the input target temperature parameters, LAMMPS takes that to specify the temperature of the whole simulation. Since the vast majority of the simulation particles are SREV nucleosome ellipsoids that are kept stuck in place, this complicates the actual energy that gets distributed among the mobile particles to have them move at the specified temperature. Therefore, the input temperature parameters that are given to the LAMMPS simulator program should take this into account so that the mobile particles are actually diffusing at your desired target temperature (in this case the script is set to simulate the objects at a target temperature T = 2.50*).
 
+The equation that computes the temperature to input to produce the desired temperature is the following: number_of_mobile_particles / (number_of_mobile_particles + number_of_immobile_particles) * desired_temp = temp_to_input
+
 ### What does "ru" mean for how I change out different variables?
 
-Explanations on reduced units used.
+In the simulation, 1 reduced unit (ru) = 0.1 nm. So nucleosomes, which are estimated to be approximately 10 nm x 10 nm x 0.5 nm are represented in the simulation as ellipsoids with shape dimensions of 1 ru x 1 ru x 0.5 ru. A simulation box of 2 microns x 2 microns x 2 microns would be scripted as 200 ru x 200 ru x 200 ru. 
 
 ## References and Acknowledgements
 
@@ -65,3 +67,5 @@ The simulations scripted here were performed using the LAMMPS Molecular Dynamics
 1. LAMMPS - A flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales, Comp. Phys. Comm. 271, 108171 (2022)
 
 2. Brown, W. M., Petersen, M. K., Plimpton, S. J., & Grest, G. S. (2009). Liquid crystal nanodroplets in solution. *The Journal of Chemical Physics, 130*(4), 044901. https://doi.org/10.1063/1.3058435
+
+We acknowledge the contributions of Dr. Marcelo Carignano in determining the formula for obtaining the desired simulation temperature based on the number of mobile particles and immobilized particles.
