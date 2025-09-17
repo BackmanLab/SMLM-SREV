@@ -11,7 +11,7 @@ create_box 3 box                   # Three atom types: 1) chrm 2) mobile fluorop
 
 # read in SREV config file
 
-read_dump config-relaxed-5.dump 0 x y z add yes box yes
+read_dump config-relaxed-8.dump 0 x y z add yes box yes
 
 # read in dye label input file which contains most current info on which fluorophores should stay chromatin-bound and which should be mobile
 

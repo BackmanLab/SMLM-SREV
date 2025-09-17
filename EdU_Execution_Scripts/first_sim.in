@@ -11,7 +11,7 @@ create_box 2 box                   # Two atom types: 1) chrm 2) fluorophores
 
 # read in SREV config file
 
-read_dump config-relaxed-5.dump 0 x y z add yes box yes 
+read_dump config-relaxed-8.dump 0 x y z add yes box yes
 
 # read in initialized fluorophore file
 

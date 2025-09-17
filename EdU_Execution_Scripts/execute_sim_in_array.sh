@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=p31375
 #SBATCH --array=1-10
-#SBATCH --partition=long
-#SBATCH --time=120:00:00
+#SBATCH --partition=normal
+#SBATCH --time=48:00:00
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem=30G
@@ -10,19 +10,22 @@
 
 #TRADE OUT DIRNAME FOR DIRECTORY TO YOUR SREV CONFIGS
 
-dirname="/projects/p31375/STORM/SphericalSize/MultipleConfigs/Set4/Phi08/Config_${SLURM_ARRAY_TASK_ID}"
+dirname="/projects/p31375/SMLM-SREV-main/EdU_Phi08/Config_${SLURM_ARRAY_TASK_ID}"
 
 cd $dirname
 
 # TRADE OUT SOURCE DIRECTORY YOU COPY FILES FROM FOR LOCATION OF THESE SCRIPTS
 
-cp /projects/p31375/STORM/SphericalSize/MultipleConfigs/FixAndContinue/EdU_Execution_Scripts/* .
+cp /projects/p31375/SMLM-SREV-main/EdU_Execution_Scripts/* .
 
 # safeguard preventing combination of data from multiple simulations in case you need to rerun anything
 
 rm walkers.xyz
 rm walkerinput.in
 rm edited-config*
+rm log*
+rm post-immobil*
+rm dump*
 
 # load packages
 
@@ -94,7 +97,9 @@ for i in $(seq 1 10); do
 	mpirun -np 32 lmp -in overlapfilter_continue.in
 	var=$(sed -n '4,4p' dump.immob)
 	var2=$(sed -n '4,4p' dump.ellipsoid)
+	echo "immob particle numbers"
 	echo $var
+	echo $var2
 	a=$(echo "10000 - ( $var - $var2 )" | bc -l)
 	echo $a
 	c=$var
