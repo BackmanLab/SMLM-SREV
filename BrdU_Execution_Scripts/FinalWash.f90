@@ -24,7 +24,7 @@ program finalwash
   protradius = 1.00d0/2.0d0
   saves = 21
   extractionpoint = 20000
-  configfilename = 'edited-config-5.dump'
+  configfilename = 'edited-config-8.dump'
 
   open(unit = 1, file = trim(configfilename))
   do i = 1, 9
@@ -92,7 +92,7 @@ enddo
 
 print *, 'finished iterating'
 
-open(unit = 9, file = "BrdU-postwash-config-7.xyz") ! output the coordinates of the dye labels that remain bound to the model chromatin sample post-wash
+open(unit = 9, file = 'BrdU-postwash-config-8.xyz')
 do i = 1, walkercount
 	if (bindarray(i) .eq. 3) then
      	write(9,*) bindarray(i), walkx(i), walky(i), walkz(i)

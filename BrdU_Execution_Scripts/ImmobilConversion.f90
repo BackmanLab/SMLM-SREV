@@ -21,7 +21,7 @@ program immobilconversion
   protradius = 1.00d0/2.0d0
   saves = 21 
   extractionpoint = 20000
-  configfilename = 'edited-config-5.dump'
+  configfilename = 'edited-config-8.dump'
 
   open(unit = 1, file = trim(configfilename))
   do i = 1, 9

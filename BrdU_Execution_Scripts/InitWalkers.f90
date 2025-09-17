@@ -26,7 +26,7 @@ program initializelabels
   character(len=50) :: configfilename
   character(len=100) :: wccommand
   
-  configfilename = 'config-relaxed-5.dump'
+  configfilename = 'config-relaxed-8.dump'
   pi = dacos(-1.0d0)
   xlength=200 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
   ylength=200 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
