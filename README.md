@@ -45,11 +45,12 @@ Set up your directory of SREV configurations in the following manner:
 
 - For the *n* number of SREV configs in this production directory, have *n* directories (one for each SREV config). Each SREV config should be assigned its own index that is between 1 to *n*. The SREV config file name should be named as "config-$_i_.dump", where $_i_ is the index of that SREV config. Each of the directories within the production directory should also be assigned its own index that is between 1 to *n*. Each of these directories within the production directory should be named as "Config_$_i_", where $_i_ is the assigned index of that directory. Each of these directories should only contain the SREV config that is of the same index as the directory.
 
-**Specify the simulation box dimensions.** 
+<ins>**Specify the simulation box dimensions.**</ins> 
+
 - This should match the SREV config file dimensions. All these scripts are in units of reduced units or "ru", where 1 ru = 10 nm.
 Go to InitWalkers.f90, ImmobilConversion.f90, and FinalWash.f90, and ensure all xlength, ylength, and zlength variables are consistent with the box dimensions indicated in the SREV config file and that in the InitWalkers.f90 file all xlowerbound, ylowerbound, and zlowerbound variables are consistent with the lowerbound dimensions stipulated in lines 6-8 of the SREV config file. To identify the xlowerbound, ylowerbound, and zlowerbound information in the SREV config file, understand that line 6 specifies the lower and upper limits of the box in the x direction, line 7 specifies the lower and upper limits of the box in the y direction, and line 8 specifies the lower and upper limits of the box in the z direction. In lines 6-8, the order of the values is lower limit in that dimension and then upper limit in that dimension. Understand that these box dimensions are given in ru and in scientific notation. So, if line 7 says " -1.0000000000000000e+02 1.0000000000000000e+02", that means the box dimension in the y dimension is -100 ru to 100 ru. This means you should go to the lines that define the ylowerbound and ylength variables and set ylowerbound as -100 and ylength as 200 (as y_upper_limit - y_lower_limit = ylength).
 
-**Update the bash file.**
+<ins>**Update the bash file.**</ins>
 
 Open the execute_sim_in_array.sh file in EdU_Execution_Scripts and in BrdU_Execution_Scripts. Make the following updates:
 - In line #3: change the range specified in the definition of array to match the range of SREV configs you wish to simulate SMLM labeling in. So, if you would like to simulate SMLM labeling in 100 SREV configs, change the "#SBATCH --array=1-10" line to be "#SBATCH --array=1-100".
