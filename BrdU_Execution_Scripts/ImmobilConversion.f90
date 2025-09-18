@@ -18,7 +18,7 @@ program immobilconversion
 
   xlength=200 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
   ylength=200 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
-  zlength=200 !xlowerbound, ylowerbound, and zlowerbound should be same as in SREV config file
+  zlength=200 
   srevradius = 1.00d0/2.0d0
   protradius = 1.00d0/2.0d0
   saves = 21 
