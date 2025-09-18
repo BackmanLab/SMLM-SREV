@@ -9,7 +9,7 @@
 
 program finalwash
   implicit none
-  real*8 :: wx, wy, wz, xr, yr, zr, r, boxlength, srevradius, protradius, x, y, z, kr
+  real*8 :: wx, wy, wz, xr, yr, zr, r, srevradius, protradius, x, y, z, kr, xlength, ylength, zlength
   integer :: linecount, saves, i, j, k, n, w, npart, walkercount
   integer :: nt, binding, extractionpoint,srevtype
   integer, allocatable :: bindarray(:)
@@ -19,7 +19,9 @@ program finalwash
   character(len=15) :: tmp, tmp1
   
 
-  boxlength = 130d0 ! in ru; CHANGE THIS TO MATCH BOXLENGTH PARAMS IN SREV CONFIG FILE
+  xlength=200 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
+  ylength=200 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
+  zlength=200 
   srevradius = 1.00d0/2.0d0
   protradius = 0.20d0/2.0d0
   saves = 21
@@ -69,9 +71,9 @@ program finalwash
         xr = wx - srevx(n)
         yr = wy - srevy(n)
         zr = wz - srevz(n)
-        xr = xr - boxlength*ANINT(xr/boxlength) ! adjust computed distance for periodic boundary conditions in sim
-        yr = yr - boxlength*ANINT(yr/boxlength)
-        zr = zr - boxlength*ANINT(zr/boxlength)
+        xr = xr - xlength*ANINT(xr/xlength) ! adjust computed distance for periodic boundary conditions in sim
+        yr = yr - ylength*ANINT(yr/ylength)
+        zr = zr - zlength*ANINT(zr/zlength)
         r = sqrt(xr**2 + yr**2 + zr**2)
         if (r < (srevradius+protradius)) then
            binding = 3
