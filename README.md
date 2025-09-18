@@ -59,7 +59,7 @@ Open the execute_sim_in_array.sh file in EdU_Execution_Scripts and in BrdU_Execu
 
 ## HOW TO EXECUTE:
 
-Go to the directory containing the execution scripts (so EdU_Execution_Scripts or BrdU_Execution_Scripts). After you complete all the steps in this README's "BEFORE YOU BEGIN:" section, type "sbatch execute_sim_in_array.sh"
+Go to the directory containing the execution scripts (so EdU_Execution_Scripts or BrdU_Execution_Scripts). After you complete all the steps in this README's "BEFORE YOU BEGIN:" section, type "sbatch execute_sim_in_array.sh". This will submit the SMLM simulation jobs over all your inputted SREV configs to Quest.
 
 ## Conceptual Notes
 
