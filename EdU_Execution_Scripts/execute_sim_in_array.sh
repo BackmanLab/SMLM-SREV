@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=p31375
-#SBATCH --array=1-10
+#SBATCH --array=1-10 # CHANGE THE UPPER LIMIT FOR THE NUMBER OF SREV CONFIGS
 #SBATCH --partition=normal
 #SBATCH --time=48:00:00
 #SBATCH --nodes=2
