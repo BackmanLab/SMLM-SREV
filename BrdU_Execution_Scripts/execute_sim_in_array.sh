@@ -10,7 +10,7 @@
 
 #TRADE OUT DIRNAME FOR DIRECTORY TO YOUR SREV CONFIGS
 
-dirname="/projects/p31375/SMLM-SREV-main/BrdU_Phi08/Config_${SLURM_ARRAY_TASK_ID}"
+dirname="/projects/p31375/SMLM-SREV-main/BrdU_Phi12/Config_${SLURM_ARRAY_TASK_ID}"
 
 cd $dirname
 
