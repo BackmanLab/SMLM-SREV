@@ -26,6 +26,7 @@ rm edited-config*
 rm log*
 rm post-immobil*
 rm dump*
+rm wc.txt
 
 # load packages
 
@@ -51,9 +52,6 @@ gfortran -Ofast InitWalkers.f90 -o InitWalkers
 
 sed -i "s:^  configfilename = .*:  configfilename = '${editedlammpsdump}':" ImmobilConversion.f90
 sed -i "s/\r//g" ImmobilConversion.f90
-
-sed -i "s:^  configfilename = .*:  configfilename = '${editedlammpsdump}':" GetColoc.f90
-sed -i "s/\r//g" GetColoc.f90
 
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" overlapfilter.in
 sed -i "s:^read_dump .*:read_dump ${lammpsdump} 0 x y z add yes box yes:" first_sim.in
