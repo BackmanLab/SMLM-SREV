@@ -13,6 +13,12 @@ Tweaking the array and working directory parameters will enable each simulation 
 * [BrdU_Execution_Scripts](https://github.com/BackmanLab/SMLM-SREV/tree/490e57f64faff08d02154158d3eefdb6bcfec7a4/BrdU_Execution_Scripts): The scripts used to simulate BrdU labeling (Layer 2 of ChromGEM) with an example script provided for running through a cluster.
 * [EdU_Execution_Scripts](https://github.com/BackmanLab/SMLM-SREV/tree/490e57f64faff08d02154158d3eefdb6bcfec7a4/EdU_Execution_Scripts): The scripts used to simulate EdU labeling (Layer 2 of ChromGEM) with an example script provided for running through a cluster.
 
+## Inputs/Outputs
+
+### Input
+
+The inputs into this code are model chromatin configurations outputted by the Self-Returning Excluded Volume (SR-EV) polymer model). The computational procedure for SR-EV model generation was obtained from published work [Carignano, Kroeger, et al., eLife 2024] (https://elifesciences.org/articles/97604). The code for SR-EV generation can be made available from the co-first authors of the prior publication upon request. Two user-selected parameters are inputted into SR-EV: alpha, which regulates the clustering behavior in the SR-EV polymer, and phi, which modulates the volume fraction occupied by the model chromatin in the simulation box (i.e., the number of nucleosomes in the simulation). Here, we inputted 1.15 for alpha and 0.12 for phi to generate six model HCT116 chromatin distributions. They are provided in the [Inputs](https://github.com/BackmanLab/SMLM-SREV/tree/3700d2414475549b374b2fe3bf918d11cdbcc6eb/Inputs) folder. 
+
 ## System Requirements
 
 ### Hardware Requirements
