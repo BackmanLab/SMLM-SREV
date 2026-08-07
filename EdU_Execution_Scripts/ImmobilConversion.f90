@@ -16,9 +16,9 @@ program immobilconversion
   character(len=15) :: tmp, tmp1
   
 
-  xlength=200 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
-  ylength=200 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
-  zlength=200 
+  xlength=130 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
+  ylength=130 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
+  zlength=130 
   srevradius = 1.00d0/2.0d0
   protradius = 0.20d0/2.0d0
   saves = 21
