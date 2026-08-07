@@ -21,6 +21,10 @@ Tweaking the array and working directory parameters will enable each simulation 
 
 ### Software Requirements
 
+The following dependencies are required to run ChromGEM:
+1.	LAMMPS Molecular Dynamics Software (Mar 3, 2020 version) built with the ASPHERE, MPI, MPIIO, OpenCL, and OpenMP packages. The instructions for installation with these packages are provided in the LAMMPS User Guide here: https://docs.lammps.org/Packages.html 
+2.	OpenMPI (version 4.1.4). The release can be downloaded from the Open MPI site here: https://www.open-mpi.org/software/ompi/v4.1/ 
+
 
 ### Installation Guide
 
