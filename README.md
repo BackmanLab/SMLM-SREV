@@ -17,7 +17,10 @@ Tweaking the array and working directory parameters will enable each simulation 
 
 ### Hardware Requirements
 
+* It is recommended to allocate at least 30GB and 16 processors to each simulation. Each simulation will take up to 48 hours to run. ChromGEM can be run in serial (simulated SMLM in one chromatin configuration at a time) or in parallel (simulated SMLM in multiple chromatin configurations at once).
+
 ### Software Requirements
+
 
 ### Installation Guide
 
