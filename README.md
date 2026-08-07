@@ -10,7 +10,8 @@ Tweaking the array and working directory parameters will enable each simulation 
 
 ## Repo Contents
 
-List my files here.
+* [BrdU_Execution_Scripts](https://github.com/BackmanLab/SMLM-SREV/tree/490e57f64faff08d02154158d3eefdb6bcfec7a4/BrdU_Execution_Scripts): The scripts used to simulate BrdU labeling (Layer 2 of ChromGEM) with an example script provided for running through a cluster.
+* [EdU_Execution_Scripts](https://github.com/BackmanLab/SMLM-SREV/tree/490e57f64faff08d02154158d3eefdb6bcfec7a4/EdU_Execution_Scripts): The scripts used to simulate EdU labeling (Layer 2 of ChromGEM) with an example script provided for running through a cluster.
 
 ## System Requirements
 
