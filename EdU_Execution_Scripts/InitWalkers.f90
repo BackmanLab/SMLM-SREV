@@ -28,12 +28,12 @@ program initializelabels
   
   configfilename = 'config-relaxed-8.dump'
   pi = dacos(-1.0d0)
-  xlength=200 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
-  ylength=200 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
-  zlength=200 !xlowerbound, ylowerbound, and zlowerbound should be same as in SREV config file
-  xlowerbound = -100
-  ylowerbound = -100
-  zlowerbound = -100
+  xlength=130 ! define box bounds - ENSURE THIS IS CONSISTENT WITH PARAMS IN SREV CONFIG FILE
+  ylength=130 ! xlength, ylength, zlength should be length of simulation box in x,y,z directions
+  zlength=130 !xlowerbound, ylowerbound, and zlowerbound should be same as in SREV config file
+  xlowerbound = -65
+  ylowerbound = -65
+  zlowerbound = -65
   sigmawalkerwalker = 1.0 ! this is diameter of dye label in reduced units (ru) (1 ru = 10 nm)
   sigmachromatinchromatin = 1.0 ! this is diameter of SREV nucleosome face
   sigmawalkerchromatin = (sigmawalkerwalker+sigmachromatinchromatin)/2.0 
