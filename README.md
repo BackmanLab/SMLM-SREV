@@ -1,4 +1,4 @@
-# SMLM-SREV
+# ChromGEM
 
 ## Overview
 
