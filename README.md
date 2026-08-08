@@ -29,7 +29,8 @@ The inputs into this code are model chromatin configurations outputted by the Se
 
 The following dependencies are required to run ChromGEM:
 1.	LAMMPS Molecular Dynamics Software (Mar 3, 2020 version) built with the ASPHERE, MPI, MPIIO, OpenCL, and OpenMP packages. The instructions for installation with these packages are provided in the LAMMPS User Guide here: https://docs.lammps.org/Packages.html 
-2.	OpenMPI (version 4.1.4). The release can be downloaded from the Open MPI site here: https://www.open-mpi.org/software/ompi/v4.1/ 
+2.	OpenMPI (version 4.1.4). The release can be downloaded from the Open MPI site here: https://www.open-mpi.org/software/ompi/v4.1/
+3.	Fortran 90. The instructions for obtaining Fortran can be found here: https://fortran-lang.org/learn/os_setup/install_gfortran/ 
 
 ## Workflow
 
